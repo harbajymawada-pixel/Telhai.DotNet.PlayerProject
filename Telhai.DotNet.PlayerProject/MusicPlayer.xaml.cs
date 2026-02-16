@@ -212,7 +212,8 @@ namespace Telhai.DotNet.PlayerProject
 
             if (data == null)
             {
-                txtStatus.Text = "No metadata found";
+                txtStatus.Text = track.FilePath;
+                txtCurrentSong.Text = track.Title;
                 DisplayTrackImage(track);
                 return;
             }
@@ -221,15 +222,16 @@ namespace Telhai.DotNet.PlayerProject
             track.Artist = data.ArtistName;
             track.Album = data.AlbumName;
             track.ArtworkUrl = data.ArtworkUrl;
+
             track.MetadataLoaded = true;
 
             SaveLibrary();
 
             txtCurrentSong.Text = $"{track.Title} - {track.Artist}";
             txtStatus.Text = track.Album;
-
             DisplayTrackImage(track);
         }
+
 
         // ================= IMAGE LOGIC (THE IMPORTANT PART) =================
 
